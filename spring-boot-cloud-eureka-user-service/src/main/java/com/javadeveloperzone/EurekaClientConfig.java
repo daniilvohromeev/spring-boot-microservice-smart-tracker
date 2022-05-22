@@ -28,7 +28,6 @@ import java.util.List;
  */
 
 @SpringBootApplication
-@ComponentScan // Using a root package also allows the @ComponentScan annotation to be used without needing to specify a basePackage attribute
 @EnableEurekaClient         // To enable eureka client
 @EnableResourceServer
 @EnableSwagger2

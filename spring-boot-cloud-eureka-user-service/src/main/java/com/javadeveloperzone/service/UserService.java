@@ -20,15 +20,17 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
-    @Autowired
-    @Qualifier("orderRestTemplate")
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private CircuitBreakerFactory cbFactory;
+    private final CircuitBreakerFactory cbFactory;
+
+    public UserService(@Qualifier("orderRestTemplate") RestTemplate restTemplate, UserRepository userRepository, CircuitBreakerFactory cbFactory) {
+        this.restTemplate = restTemplate;
+        this.userRepository = userRepository;
+        this.cbFactory = cbFactory;
+    }
 
     public User save(User user){
         return userRepository.save(user);
@@ -42,12 +44,11 @@ public class UserService {
     }
 
     public List<Order> getOrderByUser(Long userId){
-        List<Order> orders = cbFactory.create("order-details").run(()->{
+        return cbFactory.create("order-details").run(()->{
                     ResponseEntity<List<Order>> ordersEntity = restTemplate.exchange("http://order-service/order/" + userId, HttpMethod.GET,null,new ParameterizedTypeReference<List<Order>>(){});
                     return ordersEntity.getBody();
                 }, throwable -> new ArrayList<>()
         );
-        return orders;
     }
 
     public List<UserDetails> getAllUsers(){

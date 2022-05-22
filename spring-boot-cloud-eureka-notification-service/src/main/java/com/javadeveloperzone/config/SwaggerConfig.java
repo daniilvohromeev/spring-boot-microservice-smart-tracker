@@ -38,9 +38,9 @@ public class SwaggerConfig {
 
 
     private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("Spring microservice API")
-                .description("Spring microservice API")
-                .contact(new Contact("Subhash Lamba", "https://prominentpixel.com/", "info@prominentpixel.com"))
+        return new ApiInfoBuilder().title("Smart Tracker API")
+                .description("Smart Tracker API")
+                .contact(new Contact("DANIIL and RODEON", "https://prominentpixel.com/", "тутЕмаилВставляй@гугол.ком"))
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .version("1.0-SNAPSHOT")

@@ -11,10 +11,7 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.HttpRequest;
-import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
@@ -22,17 +19,17 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @SpringBootApplication
 @EnableEurekaClient         // To enable eureka client
 @EnableResourceServer
 public class EurekaClientConfig {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
         SpringApplication.run(EurekaClientConfig.class, args);            // it wil start application
     }
 
@@ -46,7 +43,7 @@ public class EurekaClientConfig {
     @LoadBalanced
     @Bean
     @Primary
-    public RestTemplate orderService(){
+    public RestTemplate orderService() {
         RestTemplate restTemplate = new RestTemplate();
 
         List<ClientHttpRequestInterceptor> interceptors
@@ -54,12 +51,9 @@ public class EurekaClientConfig {
         if (CollectionUtils.isEmpty(interceptors)) {
             interceptors = new ArrayList<>();
         }
-        interceptors.add(new ClientHttpRequestInterceptor() {
-            @Override
-            public ClientHttpResponse intercept(HttpRequest httpRequest, byte[] bytes, ClientHttpRequestExecution clientHttpRequestExecution) throws IOException {
-                httpRequest.getHeaders().add("Authorization", getBearerTokenHeader());
-                return clientHttpRequestExecution.execute(httpRequest,bytes);
-            }
+        interceptors.add((httpRequest, bytes, clientHttpRequestExecution) -> {
+            httpRequest.getHeaders().add("Authorization", getBearerTokenHeader());
+            return clientHttpRequestExecution.execute(httpRequest, bytes);
         });
         restTemplate.setInterceptors(interceptors);
         return restTemplate;
@@ -67,13 +61,12 @@ public class EurekaClientConfig {
 
     @LoadBalanced
     @Bean(name = "tokenVerifier")
-    public RestTemplate tokenVerifier(){
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate;
+    public RestTemplate tokenVerifier() {
+        return new RestTemplate();
     }
 
     public String getBearerTokenHeader() {
-        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getHeader("Authorization");
+        return ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest().getHeader("Authorization");
     }
 
     @Bean

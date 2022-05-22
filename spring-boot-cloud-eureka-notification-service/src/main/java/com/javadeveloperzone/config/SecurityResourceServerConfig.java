@@ -35,7 +35,7 @@ public class SecurityResourceServerConfig extends ResourceServerConfigurerAdapte
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/notification/**")
+                .antMatchers("/api/**")
                 .access("#oauth2.hasScope('read')");      // require 'read' scope to access /demo URL
     }
 

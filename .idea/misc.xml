@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/spring-boot-cloud-eureka-order-service/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cloud-api-gateway-routing/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cloud-authentication-service/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cloud-eureka-notification-service/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cloud-eureka-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cloud-eureka-user-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="openjdk-18" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+  <component name="SwUserDefinedSpecifications">
+    <option name="specTypeByUrl">
+      <map />
+    </option>
+  </component>
+</project>

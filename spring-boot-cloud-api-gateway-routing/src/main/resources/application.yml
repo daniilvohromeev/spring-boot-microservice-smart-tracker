@@ -1,5 +1,4 @@
 
-
 eureka:
   instance:
     hostname: localhost
@@ -25,13 +24,13 @@ spring:
           predicates:
             - Path=/order/**
         - id: authentication-service
-          uri: lb://authentication-service
+          uri: lb://AUTHENTICATION-SERVICE
           predicates:
             - Path=/oauth/**
         - id: notification-service
-          uri: lb://notification-service
+          uri: lb://NOTIFICATION-SERVICE
           predicates:
-            - Path=/notification/**
+            - Path=/test/*
 
 
 

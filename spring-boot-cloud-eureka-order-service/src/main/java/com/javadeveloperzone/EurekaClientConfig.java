@@ -39,8 +39,7 @@ public class EurekaClientConfig {
     @LoadBalanced
     @Bean(name = "tokenVerifier")
     public RestTemplate tokenVerifier(){
-        RestTemplate restTemplate = new RestTemplate();
-        return restTemplate;
+        return new RestTemplate();
     }
 
     @Bean
