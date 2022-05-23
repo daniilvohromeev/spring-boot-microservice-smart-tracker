@@ -15,22 +15,14 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: user-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/user/**
-        - id: order-service
-          uri: lb://ORDER-SERVICE
-          predicates:
-            - Path=/order/**
-        - id: authentication-service
+        - id: auth_service
           uri: lb://AUTHENTICATION-SERVICE
           predicates:
             - Path=/oauth/**
         - id: notification-service
           uri: lb://NOTIFICATION-SERVICE
           predicates:
-            - Path=/test/*
+            - Path=/test/**
 
 
 

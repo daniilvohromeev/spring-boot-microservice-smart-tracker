@@ -7,20 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="server-registry-service" />
         <module name="authentication-service" />
-        <module name="order-service" />
-        <module name="user-service" />
         <module name="api-gateway-service" />
-        <module name="notification-service" />
+        <module name="eureka-server" />
+        <module name="smart-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api-gateway-service" target="11" />
       <module name="authentication-service" target="11" />
-      <module name="notification-service" target="11" />
+      <module name="eureka-server" target="11" />
       <module name="order-service" target="11" />
-      <module name="server-registry-service" target="11" />
+      <module name="smart-service" target="11" />
       <module name="user-service" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -28,9 +26,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-gateway-service" options="-parameters" />
       <module name="authentication-service" options="-parameters" />
-      <module name="notification-service" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
       <module name="order-service" options="-parameters" />
-      <module name="server-registry-service" options="-parameters" />
+      <module name="smart-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>

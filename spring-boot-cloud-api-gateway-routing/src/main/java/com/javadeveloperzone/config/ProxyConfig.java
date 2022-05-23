@@ -13,21 +13,21 @@ class ProxyConfig {
     RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route("auth_service",
-                        route -> route.path("/auth-service/**")
+                        route -> route.path("/oauth/**")
                                 .and()
                                 .method(HttpMethod.GET, HttpMethod.POST)
                                 .filters(filter -> filter.stripPrefix(1)
                                 )
-                                .uri("lb://AUTH-SERVICE"))
-                .route("tracker_service",
-                        route -> route.path("/tracker-service/**")
+                                .uri("lb://AUTHENTICATION-SERVICE"))
+                .route("smart_service",
+                        route -> route.path("/smart/**")
                                 .and()
                                 .method(HttpMethod.GET, HttpMethod.POST)
                                 .filters(filter -> filter.stripPrefix(1)
                                 )
-                                .uri("lb://TRACKER-SERVICE"))
+                                .uri("lb://SMART-SERVICE"))
                 .route("templating_service",
-                        route -> route.path("/templating-service/**")
+                        route -> route.path("/templating-eth/**")
                                 .and()
                                 .method(HttpMethod.GET, HttpMethod.POST)
                                 .filters(filter -> filter.stripPrefix(1)
