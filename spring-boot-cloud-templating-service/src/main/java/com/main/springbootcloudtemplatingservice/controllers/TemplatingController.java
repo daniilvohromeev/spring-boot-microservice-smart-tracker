@@ -1,32 +1,34 @@
 package com.main.springbootcloudtemplatingservice.controllers;
 
 
+import com.main.springbootcloudtemplatingservice.payload.TaskRequest;
 import com.main.springbootcloudtemplatingservice.services.TemplatingService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class TemplatingController {
 
-    @Autowired
-    TemplatingService service;
+    final TemplatingService service;
+
+    public TemplatingController(TemplatingService service) {
+        this.service = service;
+    }
 
     //TODO: сменить параметры на сущность
     @PostMapping("/test")
-    String templateCreator(@RequestParam String nickname, @RequestParam String startDate, @RequestParam String endDate, @RequestParam String kilometers){
+    String templateCreator(@RequestBody TaskRequest task) {
 
         //TODO: сделать красиво, а не вот это
-        List<String> temp = new ArrayList<>();
-        temp.add(nickname);
-        temp.add(startDate);
-        temp.add(endDate);
-        temp.add(kilometers);
+//        List<String> temp = new ArrayList<>();
+//        temp.add(task.getUsername());
+//        temp.add(task.getBeginDate());
+//        temp.add(task.getEndDate());
+//        temp.add(task.getDailyDistance());
 
-        return service.createTemplate(temp);
+        return service.createTemplate(task);
     }
 }
