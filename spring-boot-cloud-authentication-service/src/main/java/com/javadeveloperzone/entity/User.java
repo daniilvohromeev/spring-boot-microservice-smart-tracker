@@ -19,14 +19,12 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Long id;
-
     private String username;
-
     private String password;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
-
+    @OneToMany(mappedBy = "user")
+    List<Task> tasks;
     public User() {
 
     }

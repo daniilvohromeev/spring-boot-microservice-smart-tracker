@@ -1,7 +1,5 @@
 package com.javadeveloperzone.config;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,9 +23,11 @@ public class SecurityResourceServerConfig extends ResourceServerConfigurerAdapte
     @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
 
-    @Autowired
-    @Qualifier("tokenVerifier")
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
+
+    public SecurityResourceServerConfig(@Qualifier("tokenVerifier") RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {

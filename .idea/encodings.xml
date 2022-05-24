@@ -13,5 +13,7 @@
     <file url="file://$PROJECT_DIR$/spring-boot-cloud-eureka-user-service/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/resources" charset="UTF-8" />
   </component>
 </project>

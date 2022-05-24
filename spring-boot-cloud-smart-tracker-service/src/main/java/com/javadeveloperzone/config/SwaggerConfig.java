@@ -15,7 +15,6 @@ import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .securityContexts(Collections.singletonList(securityContext()))
-                .securitySchemes(Arrays.asList(securitySchema()))
+                .securitySchemes(List.of(securitySchema()))
                 .apiInfo(apiEndPointsInfo());
     }
 

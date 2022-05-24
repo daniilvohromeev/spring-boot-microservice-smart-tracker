@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-boot-cloud-eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/spring-boot-cloud-eureka-server/eureka-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/smart-service.iml" filepath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/smart-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/spring-boot-microservices-example.iml" filepath="$PROJECT_DIR$/.idea/spring-boot-microservices-example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-cloud-templating-service/templating-service.iml" filepath="$PROJECT_DIR$/spring-boot-cloud-templating-service/templating-service.iml" />
     </modules>
   </component>
 </project>

@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="authentication-service" />
+        <module name="templating-service" />
         <module name="api-gateway-service" />
         <module name="eureka-server" />
         <module name="smart-service" />
@@ -19,6 +20,7 @@
       <module name="eureka-server" target="11" />
       <module name="order-service" target="11" />
       <module name="smart-service" target="11" />
+      <module name="templating-service" target="11" />
       <module name="user-service" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -29,6 +31,7 @@
       <module name="eureka-server" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="smart-service" options="-parameters" />
+      <module name="templating-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>
