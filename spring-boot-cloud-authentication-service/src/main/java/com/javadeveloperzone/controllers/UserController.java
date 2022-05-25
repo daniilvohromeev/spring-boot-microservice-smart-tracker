@@ -4,13 +4,23 @@ import com.javadeveloperzone.entity.User;
 import com.javadeveloperzone.payroll.UserRequest;
 import com.javadeveloperzone.repo.RoleRepository;
 import com.javadeveloperzone.repo.UserRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import lombok.SneakyThrows;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +42,7 @@ public class UserController {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.roleRepository = roleRepository;
     }
+
 
     @GetMapping("/users/current")
     public EntityModel<User> currentUser(Principal principal) {
@@ -57,6 +68,15 @@ public class UserController {
                 .body(entityUser);
     }
 
+    @SneakyThrows
+    @GetMapping(value = "/users/{user_id}/image", produces = MediaType.IMAGE_JPEG_VALUE)
+    EntityModel<File> downloadImage(@PathVariable Long user_id) {
+        byte[] image = userRepository.findById(user_id)//
+                .orElseThrow(() -> new RuntimeException("Пользователь с id: " + user_id + " не найден")) //
+                .getImage().getContent();
+        return EntityModel.of(new ByteArrayResource(image).getFile());
+    }
+
     @GetMapping("/users/{id}")
     public EntityModel<User> userOne(@PathVariable Long id) {
         User user = userRepository.findById(id).orElseThrow(
@@ -65,6 +85,23 @@ public class UserController {
                 linkTo(methodOn(UserController.class).userAll()).withRel("users"));
     }
 
+    @DeleteMapping("/users/{id}")
+    ResponseEntity<?> deleteUser(@PathVariable("id") Long id) {
+        userRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Gets all users", tags = "user")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Found the users",
+                    content = {
+                            @Content(
+                                    mediaType = "application/json",
+                                    array = @ArraySchema(schema = @Schema(implementation = UserController.class)))
+                    })
+    })
     @GetMapping("/users")
     CollectionModel<EntityModel<User>> userAll() {
         List<EntityModel<User>> users = userRepository.findAll().stream()

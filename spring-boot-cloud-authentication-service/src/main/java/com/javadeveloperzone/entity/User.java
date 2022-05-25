@@ -25,6 +25,8 @@ public class User implements UserDetails {
     private List<Role> roles;
     @OneToMany(mappedBy = "user")
     List<Task> tasks;
+    @OneToOne(mappedBy = "user")
+    Image image;
     public User() {
 
     }
