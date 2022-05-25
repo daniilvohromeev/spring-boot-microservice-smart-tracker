@@ -11,7 +11,6 @@
         <module name="templating-service" />
         <module name="api-gateway-service" />
         <module name="eureka-server" />
-        <module name="smart-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

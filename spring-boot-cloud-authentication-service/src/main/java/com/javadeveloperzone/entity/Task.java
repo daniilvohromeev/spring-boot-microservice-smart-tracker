@@ -1,19 +1,20 @@
 package com.javadeveloperzone.entity;
 
+import jdk.jfr.Enabled;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.sql.Date;
 
 @Entity
-@Table(name = "tasks")
 @Data
 public class Task {
     @Id
     @GeneratedValue
     Long id;
-    java.sql.Date beginDate;
-    java.sql.Date endDate;
+    Date start;
+    Date end;
     Integer dailyDistance;
     BigDecimal deposit;
     boolean agreement;

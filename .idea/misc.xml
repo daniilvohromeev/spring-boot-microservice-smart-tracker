@@ -6,7 +6,6 @@
         <option value="$PROJECT_DIR$/spring-boot-cloud-api-gateway-routing/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cloud-authentication-service/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cloud-eureka-notification-service/pom.xml" />
-        <option value="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cloud-eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cloud-templating-service/pom.xml" />
       </list>

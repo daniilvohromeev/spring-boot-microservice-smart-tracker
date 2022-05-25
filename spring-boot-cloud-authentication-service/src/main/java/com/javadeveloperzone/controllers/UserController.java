@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,27 +22,27 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/api")
 public class UserController {
 
-
-    //    final CustomUserDetailService userDetailService;
     final UserRepository userRepository;
     final PasswordEncoder bCryptPasswordEncoder;
 
     final RoleRepository roleRepository;
 
     public UserController(UserRepository userRepository, PasswordEncoder bCryptPasswordEncoder, RoleRepository roleRepository) {
-//        this.userDetailService = userDetailService;
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
         this.roleRepository = roleRepository;
     }
 
+    @GetMapping("/users/current")
+    public EntityModel<User> currentUser(Principal principal) {
+        User currentUser = userRepository.findByUsername(principal.getName()).orElseThrow(
+                () -> new RuntimeException("Пользователь с именем: " + principal.getName() + "не найден")
+        );
+        return EntityModel.of(currentUser,
+                linkTo(methodOn(UserController.class).userOne(currentUser.getId())).withSelfRel());
+    }
 
-//    public UserController(UserRepository userRepository, PasswordEncoder bCryptPasswordEncoder) {
-//        this.userRepository = userRepository;
-//        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-//    }
-
-    @PostMapping("/registration")
+    @PostMapping("/users/registration")
     public ResponseEntity<?> registration(@RequestBody UserRequest newUser) {
         User user = User.builder()
                 .username(newUser.getUsername())

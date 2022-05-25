@@ -22,19 +22,26 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c55492b-14a4-47db-bca7-e4293d1c7383" name="Default Changelist" comment="ничего не поменялось, это коммит грусти">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_oauth_spring_security_oauth2_2_5_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_6_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_6_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_6_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java/com/main/springbootcloudtemplatingservice/config/SecurityResourceServerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java/com/main/springbootcloudtemplatingservice/payload/TaskRequest.java" afterDir="false" />
+    <list default="true" id="2c55492b-14a4-47db-bca7-e4293d1c7383" name="Default Changelist" comment="одтянул Oauth2.0 безопасность к сервису templating-service, внес комментарии. Добавил в пакет payload сушьность ожидаемого тела для получения на /test">
+      <change afterPath="$PROJECT_DIR$/spring-boot-cloud-authentication-service/src/main/java/com/javadeveloperzone/controllers/TaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-cloud-authentication-service/src/main/java/com/javadeveloperzone/entity/Image.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-cloud-authentication-service/src/main/java/com/javadeveloperzone/entity/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-cloud-authentication-service/src/main/java/com/javadeveloperzone/repo/TaskRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-templating-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-cloud-templating-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java/com/main/springbootcloudtemplatingservice/SpringBootCloudTemplatingServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java/com/main/springbootcloudtemplatingservice/SpringBootCloudTemplatingServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java/com/main/springbootcloudtemplatingservice/controllers/TemplatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java/com/main/springbootcloudtemplatingservice/controllers/TemplatingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java/com/main/springbootcloudtemplatingservice/services/TemplatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/java/com/main/springbootcloudtemplatingservice/services/TemplatingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-cloud-templating-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-authentication-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-cloud-authentication-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-authentication-service/src/main/java/com/javadeveloperzone/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-cloud-authentication-service/src/main/java/com/javadeveloperzone/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/smart-service.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/java/com/javadeveloperzone/SmartServiceBoot.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/java/com/javadeveloperzone/config/SecurityResourceServerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/java/com/javadeveloperzone/config/SwaggerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/java/com/javadeveloperzone/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/java/com/javadeveloperzone/entity/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/java/com/javadeveloperzone/entity/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/java/com/javadeveloperzone/repository/TaskRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-cloud-smart-tracker-service/src/main/resources/application.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +51,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -90,29 +97,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/myps4/IdeaProjects/smart-tracker",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.27816093",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "spring.configuration.checksum": "b82b4fd4542a3e110761bdf1b042246d"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/myps4/IdeaProjects/smart-tracker&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.27816093&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;b82b4fd4542a3e110761bdf1b042246d&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.main.springbootcloudtemplatingservice.config" />
@@ -239,7 +246,8 @@
       <workItem from="1653225417947" duration="357000" />
       <workItem from="1653299209486" duration="13347000" />
       <workItem from="1653403310766" duration="3710000" />
-      <workItem from="1653407743094" duration="1377000" />
+      <workItem from="1653407743094" duration="1569000" />
+      <workItem from="1653409469247" duration="1452000" />
     </task>
     <task id="LOCAL-00001" summary="Postgres Up">
       <created>1653225434594</created>
@@ -269,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653407047666</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="одтянул Oauth2.0 безопасность к сервису templating-service, внес комментарии. Добавил в пакет payload сушьность ожидаемого тела для получения на /test">
+      <created>1653409293037</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653409293038</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +306,7 @@
     <MESSAGE value="spring hateos and ProxyConfig.java was added" />
     <MESSAGE value="/registartion work" />
     <MESSAGE value="ничего не поменялось, это коммит грусти" />
-    <option name="LAST_COMMIT_MESSAGE" value="ничего не поменялось, это коммит грусти" />
+    <MESSAGE value="одтянул Oauth2.0 безопасность к сервису templating-service, внес комментарии. Добавил в пакет payload сушьность ожидаемого тела для получения на /test" />
+    <option name="LAST_COMMIT_MESSAGE" value="одтянул Oauth2.0 безопасность к сервису templating-service, внес комментарии. Добавил в пакет payload сушьность ожидаемого тела для получения на /test" />
   </component>
 </project>
