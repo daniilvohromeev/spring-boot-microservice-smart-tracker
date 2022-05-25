@@ -21,6 +21,3 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone : http://${eureka.instance.hostname}:8761/eureka/
-application:
-  description: Rest API for smart-tracker app
-  version: 1.0

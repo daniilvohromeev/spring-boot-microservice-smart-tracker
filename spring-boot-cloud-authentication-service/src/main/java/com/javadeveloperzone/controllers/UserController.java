@@ -4,12 +4,6 @@ import com.javadeveloperzone.entity.User;
 import com.javadeveloperzone.payroll.UserRequest;
 import com.javadeveloperzone.repo.RoleRepository;
 import com.javadeveloperzone.repo.UserRepository;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.SneakyThrows;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.hateoas.CollectionModel;
@@ -91,17 +85,6 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Gets all users", tags = "user")
-    @ApiResponses(value = {
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "Found the users",
-                    content = {
-                            @Content(
-                                    mediaType = "application/json",
-                                    array = @ArraySchema(schema = @Schema(implementation = UserController.class)))
-                    })
-    })
     @GetMapping("/users")
     CollectionModel<EntityModel<User>> userAll() {
         List<EntityModel<User>> users = userRepository.findAll().stream()
