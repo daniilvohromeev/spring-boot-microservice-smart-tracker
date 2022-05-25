@@ -36,7 +36,8 @@ public class SecurityResourceServerConfig extends ResourceServerConfigurerAdapte
                 .and()
                 .authorizeRequests()
                 .antMatchers("/api/**")
-                .access("#oauth2.hasScope('read')");      // require 'read' scope to access /demo URL
+                .access("#oauth2.hasScope('read')")
+                .antMatchers("/api").permitAll();      // require 'read' scope to access /demo URL
     }
 
     @Primary

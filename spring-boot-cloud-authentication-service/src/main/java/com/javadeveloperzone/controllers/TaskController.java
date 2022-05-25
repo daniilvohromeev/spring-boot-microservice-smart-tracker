@@ -6,10 +6,7 @@ import com.javadeveloperzone.repo.TaskRepository;
 import com.javadeveloperzone.repo.UserRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,6 +36,15 @@ public class TaskController {
                 linkTo(methodOn(TaskController.class).taskAll()).withRel("tasks"));
 
     }
+
+//    @PostMapping("/tasks/creat/{user_id}")
+//    public EntityModel<Task> creatTaskOne(@RequestBody Task task, @PathVariable Long user_id) {
+//        User user = userRepository.findById(user_id).orElseThrow(
+//                () -> new RuntimeException("Пользователь с id: " + user_id + " не найдено")
+//        );
+//        taskRepository.save(task);
+//
+//    }
 
     @GetMapping("/tasks/{user_id}")
     public CollectionModel<EntityModel<Task>> taskByUser(@PathVariable Long user_id) {
