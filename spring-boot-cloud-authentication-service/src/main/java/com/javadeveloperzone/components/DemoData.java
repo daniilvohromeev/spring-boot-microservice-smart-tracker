@@ -26,15 +26,13 @@ public class DemoData {
 
     @EventListener()
     public void appIsReady(ApplicationReadyEvent event) {
-        roleRepository.save(
-                Role.builder()
-                        .name("USER")
-                        .build());
-        userRepository.save(
-                User.builder()
-                        .username("Egorka")
-                        .password(bCryptPasswordEncoder.encode("password"))
-                        .roles(List.of(roleRepository.findById(1L).get()))
-                        .build());
+        userRepository.save(User.builder()
+                .username("Egorka")
+                .password(bCryptPasswordEncoder.encode("password"))
+                .roles(List.of(roleRepository.save(Role.builder()
+                        .id(1L)
+                        .name("ROLE_USER")
+                        .build())))
+                .build());
     }
 }

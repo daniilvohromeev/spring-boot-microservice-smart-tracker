@@ -5,6 +5,7 @@ import com.main.springbootcloudtemplatingservice.payload.TaskRequest;
 import com.main.springbootcloudtemplatingservice.services.TemplatingService;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,23 +13,29 @@ import java.util.List;
 @RequestMapping("/api")
 public class TemplatingController {
 
-    final TemplatingService service;
 
-    public TemplatingController(TemplatingService service) {
-        this.service = service;
+    @GetMapping("/user")
+    public String me(Principal principal){
+        return principal.getName();
     }
 
-    //TODO: сменить параметры на сущность
-    @PostMapping("/test")
-    String templateCreator(@RequestBody TaskRequest task) {
-
-        //TODO: сделать красиво, а не вот это
-//        List<String> temp = new ArrayList<>();
-//        temp.add(task.getUsername());
-//        temp.add(task.getBeginDate());
-//        temp.add(task.getEndDate());
-//        temp.add(task.getDailyDistance());
-
-        return service.createTemplate(task);
-    }
+//    final TemplatingService service;
+//
+//    public TemplatingController(TemplatingService service) {
+//        this.service = service;
+//    }
+//
+//    //TODO: сменить параметры на сущность
+//    @PostMapping("/test")
+//    String templateCreator(@RequestBody TaskRequest task) {
+//
+//        //TODO: сделать красиво, а не вот это
+////        List<String> temp = new ArrayList<>();
+////        temp.add(task.getUsername());
+////        temp.add(task.getBeginDate());
+////        temp.add(task.getEndDate());
+////        temp.add(task.getDailyDistance());
+//
+//        return service.createTemplate(task);
+//    }
 }

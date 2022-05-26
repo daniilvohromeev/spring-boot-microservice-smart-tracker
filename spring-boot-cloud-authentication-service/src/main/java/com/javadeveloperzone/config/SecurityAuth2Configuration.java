@@ -1,7 +1,9 @@
 package com.javadeveloperzone.config;
 
+import com.javadeveloperzone.service.CustomUserDetailService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -13,16 +15,18 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 public class SecurityAuth2Configuration extends AuthorizationServerConfigurerAdapter {
 
     private final AuthenticationManager authenticationManager;
-    public SecurityAuth2Configuration(AuthenticationManager authenticationManager) {
+    private final CustomUserDetailService userDetailService;
+
+    public SecurityAuth2Configuration(AuthenticationManager authenticationManager, CustomUserDetailService userDetailService) {
         this.authenticationManager = authenticationManager;
+        this.userDetailService = userDetailService;
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-        oauthServer.tokenKeyAccess("permitAll()")
-                .checkTokenAccess("permitAll()");
-
+        oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("permitAll()");
     }
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
@@ -36,6 +40,6 @@ public class SecurityAuth2Configuration extends AuthorizationServerConfigurerAda
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints.authenticationManager(authenticationManager);
+        endpoints.authenticationManager(authenticationManager).userDetailsService(userDetailService);
     }
 }

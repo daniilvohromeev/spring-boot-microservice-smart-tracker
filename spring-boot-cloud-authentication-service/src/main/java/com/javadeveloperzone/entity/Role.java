@@ -15,7 +15,8 @@ import java.util.List;
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
     @Id
-    @GeneratedValue
+//    @SequenceGenerator(name="seq",sequenceName="oracle_seq")
+// (strategy=GenerationType.SEQUENCE, generator="seq")
     public Long id;
     public String name;
     @Transient

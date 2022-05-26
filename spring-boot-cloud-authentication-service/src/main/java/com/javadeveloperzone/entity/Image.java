@@ -13,7 +13,7 @@ public class Image {
     @Lob
     byte[] content;
     String name;
-    @OneToOne
+    @OneToOne(mappedBy = "image")
     @JoinColumn(name = "user_id", nullable = false)
     User user;
 

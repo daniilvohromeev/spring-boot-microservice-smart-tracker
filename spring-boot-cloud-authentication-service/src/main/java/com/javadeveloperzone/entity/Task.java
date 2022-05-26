@@ -1,6 +1,5 @@
 package com.javadeveloperzone.entity;
 
-import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,16 +14,17 @@ import java.sql.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="smart_task")
 public class Task {
     @Id
     @GeneratedValue
     Long id;
-    Date start;
-    Date end;
+    Date startDate;
+    Date endDate;
     Integer dailyDistance;
     BigDecimal deposit;
     boolean agreement;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    User user;
+    private User user;
 }

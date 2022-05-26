@@ -5,7 +5,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   application:
     name: authentication-service
   security:
@@ -21,3 +21,10 @@ eureka:
     fetchRegistry: true
     serviceUrl:
       defaultZone : http://${eureka.instance.hostname}:8761/eureka/
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://authentication-service/oauth/check_token
+    client:
+      client-id: javadeveloperzone
+      client-secret: secret

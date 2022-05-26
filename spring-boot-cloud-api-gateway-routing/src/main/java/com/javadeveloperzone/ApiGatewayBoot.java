@@ -15,7 +15,7 @@ import java.util.Collections;
 @EnableEurekaClient
 public class ApiGatewayBoot {
     public static void main(String[] args) {
-        SpringApplication.run(ApiGatewayBoot.class, args);            // it wil start application
+        SpringApplication.run(ApiGatewayBoot.class, args);            // it wil startDate application
     }
 }
 

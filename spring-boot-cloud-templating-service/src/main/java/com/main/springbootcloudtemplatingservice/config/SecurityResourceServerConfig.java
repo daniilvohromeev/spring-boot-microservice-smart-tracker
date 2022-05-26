@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,12 +31,16 @@ public class SecurityResourceServerConfig extends ResourceServerConfigurerAdapte
     }
 
     @Override
+    public void configure(ResourceServerSecurityConfigurer resources) {
+        resources.resourceId("templating-service");
+    }
+    @Override
     public void configure(HttpSecurity http) throws Exception {
         http
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/**")
+                .antMatchers("/api/user**")
                 .access("#oauth2.hasScope('read')")
                 .antMatchers("/api").permitAll();      // require 'read' scope to access /demo URL
     }

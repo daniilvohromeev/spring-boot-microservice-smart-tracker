@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -17,15 +18,18 @@ import java.util.List;
 @Table(name = "users")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue
+   // @SequenceGenerator(name="seq",sequenceName="oracle_seq")
+    @GeneratedValue//(strategy=GenerationType.SEQUENCE, generator="seq")
     private Long id;
     private String username;
     private String password;
+
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Role> roles;
+
     @OneToMany(mappedBy = "user")
-    List<Task> tasks;
-    @OneToOne(mappedBy = "user")
+    private Set<Task> tasks;
+    @OneToOne()
     Image image;
     public User() {
 
